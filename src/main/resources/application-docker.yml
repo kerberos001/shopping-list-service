@@ -1,0 +1,24 @@
+server:
+  port: 9100
+  servlet:
+    context-path: /shopping
+spring:
+  datasource:
+    # Si corres MySQL en Docker y la App en IntelliJ, usa localhost
+    url: jdbc:mysql://shopping-list-db:3306/shopping_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: root # El que pongas en tu docker-compose
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    # Muestra los queries SQL en la consola (útil para debuggear)
+    show-sql: true
+    hibernate:
+      # 'update' crea las tablas automáticamente si no existen
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+app:
+  cors:
+    allowed-origins: http://localhost:5173

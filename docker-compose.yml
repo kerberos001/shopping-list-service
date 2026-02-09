@@ -1,0 +1,22 @@
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - 9100:9100
+  shopping-list-db:
+    image: mysql:8.0
+    container_name: shopping-list-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: shopping_db      # <--- ESTO crea la DB si no existe
+      MYSQL_ROOT_PASSWORD: root        # Contraseña del root
+      MYSQL_USER: shopping_user        # Usuario específico (opcional pero recomendado)
+      MYSQL_PASSWORD: shopping_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql      # <--- ESTO guarda los datos aunque apagues el contenedor
+
+volumes:
+  mysql_data:
