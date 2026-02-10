@@ -5,11 +5,10 @@ server:
 spring:
   datasource:
     # Reemplaza [YOUR-PASSWORD] con la contraseña que pusiste al crear el proyecto en Supabase
-    url: jdbc:postgresql://db.xjcehcevipfbwaikwtcm.supabase.co:5432/postgres
-    username: postgres
+    url: ${DB_URL}
+    username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-
   jpa:
     # Muestra los queries SQL en la consola (útil para debuggear)
     show-sql: true
