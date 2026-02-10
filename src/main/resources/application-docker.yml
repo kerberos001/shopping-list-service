@@ -4,11 +4,11 @@ server:
     context-path: /shopping
 spring:
   datasource:
-    # Si corres MySQL en Docker y la App en IntelliJ, usa localhost
-    url: jdbc:mysql://shopping-list-db:3306/shopping_db?createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: root
-    password: root # El que pongas en tu docker-compose
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    # Reemplaza [YOUR-PASSWORD] con la contraseña que pusiste al crear el proyecto en Supabase
+    url: jdbc:postgresql://db.xjcehcevipfbwaikwtcm.supabase.co:5432/postgres
+    username: postgres
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     # Muestra los queries SQL en la consola (útil para debuggear)
@@ -18,7 +18,11 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        # Esto ayuda a que Postgres entienda mejor los tipos de datos de Java
+        jdbc:
+          lob:
+            non_contextual_creation: true
 app:
   cors:
-    allowed-origins: http://localhost:5173
+    allowed-origins: http://localhost:9200

@@ -4,6 +4,9 @@ services:
       context: .
     ports:
       - 9100:9100
+    environment:
+      # Esto le dice a Spring que use application-docker.yml
+      - SPRING_PROFILES_ACTIVE=docker
   shopping-list-db:
     image: mysql:8.0
     container_name: shopping-list-db
@@ -17,6 +20,17 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql      # <--- ESTO guarda los datos aunque apagues el contenedor
-
+  frontend:
+    build:
+      context: ../shopping-list-app  # Ruta a la carpeta de tu proyecto React
+      dockerfile: Dockerfile
+    ports:
+      - "9200:80"          # Podrás ver tu app en localhost:8080
+    networks:
+      - shopping-network
+    restart: always
+networks:
+  shopping-network:
+    driver: bridge
 volumes:
   mysql_data:
