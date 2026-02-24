@@ -23,7 +23,7 @@ public class ShoppingListController {
     private final ShoppingListService shoppingListService;
 
 
-    // 1. Obtener todas las listas
+    // 1. Obtener todas las listas1
     @GetMapping
     public List<ShoppingListDTO> getAllLists() {
         // Lógica para devolver listas...
