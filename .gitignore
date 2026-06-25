@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +32,31 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Maven ###
+.mvn/timing.properties
+dependency-reduced-pom.xml
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+### Spring Boot ###
+application-local.yml
+application-local.properties
+
+### Environment & secrets ###
+.env
+.env.*
+!.env.example
+
+### Logs & JVM crash dumps ###
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+
+### OS ###
+.DS_Store
+Thumbs.db
